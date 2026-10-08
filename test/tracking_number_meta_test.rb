@@ -2,7 +2,7 @@ require 'test_helper'
 
 def load_courier_data(name = :all)
   if name == :all
-    Dir.glob(File.join(File.dirname(__FILE__), "../lib/data/couriers/*.json")).collect do |file|
+    Dir.glob(File.join(File.dirname(__FILE__), "../lib/{data,onward_data}/couriers/*.json")).collect do |file|
       JSON.parse(File.read(file)).deep_symbolize_keys!
     end
   else

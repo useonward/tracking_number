@@ -1,0 +1,26 @@
+{
+  "name": "YWE (Yanwen Express US)",
+  "courier_code": "ywe",
+  "tracking_numbers": [
+    {
+      "name": "YWE",
+      "id": "ywe",
+      "regex": [
+        "\\s*Y\\s*W\\s*(?<SerialNumber>(E\\s*([0-9]\\s*){14})|(([A-Z]\\s*){3}([0-9]\\s*){12}))\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "YWE00000000000001",
+          "YWLAX000000000001",
+          "YWNJC000000000002"
+        ],
+        "invalid": [
+          "YW000000001",
+          "YWIL00000000",
+          "YWE0000000000001"
+        ]
+      }
+    }
+  ]
+}
