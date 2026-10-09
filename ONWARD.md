@@ -7,7 +7,8 @@ Onward installs this gem from git (`useonward/tracking_number`, branch `onward`,
 - `lib/onward_data/couriers/*.json`: our carrier definitions, in the same format as upstream's `lib/data/couriers`. The `lib/data` submodule still points at upstream `jkeen/tracking_number_data`.
 - `lib/tracking_number.rb` and `lib/tracking_number/loader.rb`: load both folders.
 - `test/tracking_number_meta_test.rb`: runs every definition's test numbers from both folders.
-- CI tests the Ruby versions Onward runs, and the release workflow is removed so pushes never publish to rubygems.
+- `test/onward_couriers_test.rb`: fails if our carriers stop loading or lose detection to another carrier.
+- CI tests Ruby 3.3 and 4.0 (Onward runs 4.0), and the release workflow is removed so pushes never publish to rubygems.
 - `lib/tracking_number/version.rb` matches our tag. Upstream only sets the version when it builds a release, so its git source always reports 1.3.4.
 
 ## Adding a carrier
@@ -19,4 +20,4 @@ Onward installs this gem from git (`useonward/tracking_number`, branch `onward`,
 
 ## Taking an upstream release
 
-Merge the upstream tag into `onward`, update the `lib/data` submodule to the tag's commit, run the tests, set `VERSION` to `X.Y.Z.onward.1`, tag `vX.Y.Z-onward.1`, and bump the tag in Onward's Gemfile. Install with `submodules: true`. Without it the gem loads no carriers, and it raises no error.
+Merge the upstream tag into `onward` (it carries the `lib/data` submodule commit), run `git submodule update --init` and the tests, set `VERSION` to `X.Y.Z.onward.1`, tag `vX.Y.Z-onward.1`, and bump the tag in Onward's Gemfile. Install with `submodules: true`. Without it the gem loads none of upstream's carriers, and it raises no error.
