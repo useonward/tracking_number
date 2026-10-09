@@ -4,15 +4,16 @@
 
 ## Onward fork
 
-Onward's fork of [jkeen/tracking_number](https://github.com/jkeen/tracking_number), published to our GitHub Packages registry like `scorekeeper`, to recognize carriers upstream doesn't cover yet. `.github/workflows/gem-push.yml` builds and publishes the gem on every push to `onward`.
+Onward's fork of [jkeen/tracking_number](https://github.com/jkeen/tracking_number), published to our GitHub Packages registry like `scorekeeper`, to recognize carriers upstream doesn't cover yet. `.github/workflows/gem-push.yml` runs the tests, then builds and publishes the gem whenever a push to `onward` changes `lib/tracking_number/version.rb`. Onward installs it inside the scoped `source "https://rubygems.pkg.github.com/useonward"` block in its Gemfile, so Bundler never resolves the public rubygems.org gem of the same name.
 
 What differs from upstream:
 
 - `lib/onward_data/couriers/*.json`: our carrier definitions, in the same format as upstream's `lib/data/couriers`. The `lib/data` submodule still points at upstream `jkeen/tracking_number_data`.
 - `lib/tracking_number.rb` and `lib/tracking_number/loader.rb`: load both folders.
 - `test/tracking_number_meta_test.rb` runs every definition's test numbers from both folders, and `test/onward_couriers_test.rb` fails if our carriers stop loading or lose detection to another carrier.
+- `tracking_number.gemspec`: `allowed_push_host` limits `gem push` to GitHub Packages, and `github_repo` links the package to this repository.
 - CI tests Ruby 3.3 and 4.0 (Onward runs 4.0). Upstream's release workflow is removed, so nothing publishes to rubygems.org.
-- `lib/tracking_number/version.rb` is our published version, `X.Y.Z.N` on top of upstream's `X.Y.Z`. The registry rejects a version it already has, so every merge to `onward` needs a new one.
+- `lib/tracking_number/version.rb` is our published version, `X.Y.Z.N` on top of upstream's `X.Y.Z`. Bumping it is what releases: the registry rejects a version it already has, so the publish job only runs when this file changes.
 
 Adding a carrier:
 

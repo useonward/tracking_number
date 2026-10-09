@@ -3,6 +3,7 @@ name: Ruby Gem
 on:
   push:
     branches: [ "onward" ]
+    paths: [ "lib/tracking_number/version.rb" ]
 
 jobs:
   build:
@@ -16,14 +17,17 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: true
+        persist-credentials: false
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.3'
+        ruby-version: '4.0'
+        bundler-cache: true
+    - name: Test
+      run: bundle exec rake test
     - name: Check the built gem detects carriers
       run: |
         gem build *.gemspec
-        gem install --local --ignore-dependencies *.gem
-        gem install activesupport json
+        gem install ./tracking_number-*.gem
         ruby -e 'require "tracking_number"; abort "gem detects no carriers" unless TrackingNumber.new("1Z5R89390357567127").courier_code == :ups && TrackingNumber.new("YWE00000000000001").courier_code == :ywe'
     - name: Publish to Github Package Registry (GPR)
       run: |
