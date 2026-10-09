@@ -1,3 +1,3 @@
 module TrackingNumber
-  VERSION = "1.3.4"
+  VERSION = "3.0.0.1"
 end

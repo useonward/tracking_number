@@ -13,7 +13,7 @@ if defined?(ActiveModel::EachValidator)
   require 'tracking_number/active_model_validator'
 end
 
-TrackingNumber::Loader.load_tracking_number_data
+TrackingNumber::Loader.load_tracking_number_data(%w[data/couriers onward_data/couriers].map { |dir| File.join(__dir__, dir) })
 
 module TrackingNumber
   def self.search(body, match: :carrier)

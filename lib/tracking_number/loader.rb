@@ -4,7 +4,7 @@ module TrackingNumber
       def load_tracking_number_data(couriers_path = File.join(File.dirname(__FILE__), '../data/couriers/'))
         mapping_data = []
         tracking_number_types = []
-        Dir.glob(File.join(couriers_path, '/*.json')).each do |file|
+        Array(couriers_path).flat_map { |path| Dir.glob(File.join(path, '/*.json')) }.each do |file|
           courier_info = read_courier_info(file)
 
           courier_info[:tracking_numbers].each do |tracking_info|
