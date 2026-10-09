@@ -19,13 +19,18 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.3'
+    - name: Check the built gem detects carriers
+      run: |
+        gem build *.gemspec
+        gem install --local --ignore-dependencies *.gem
+        gem install activesupport json
+        ruby -e 'require "tracking_number"; abort "gem detects no carriers" unless TrackingNumber.new("1Z5R89390357567127").courier_code == :ups && TrackingNumber.new("YWE00000000000001").courier_code == :ywe'
     - name: Publish to Github Package Registry (GPR)
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
         chmod 0600 $HOME/.gem/credentials
         printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        gem build *.gemspec
         gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
       env:
         GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
