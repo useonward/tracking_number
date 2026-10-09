@@ -12,7 +12,7 @@ What differs from upstream:
 - `lib/tracking_number.rb` and `lib/tracking_number/loader.rb`: load both folders.
 - `test/tracking_number_meta_test.rb` runs every definition's test numbers from both folders, and `test/onward_couriers_test.rb` fails if our carriers stop loading or lose detection to another carrier.
 - `tracking_number.gemspec`: `allowed_push_host` limits `gem push` to GitHub Packages, and `github_repo` links the package to this repository.
-- CI tests Ruby 3.3 and 4.0 (Onward runs 4.0). Upstream's release workflow is removed, so nothing publishes to rubygems.org.
+- `ruby.yml` adds Ruby 4.0, which Onward runs, to upstream's matrix, runs with a read-only token, and drops upstream's job that started a rubygems.org release on pushes to `main`.
 - `lib/tracking_number/version.rb` is our published version, `X.Y.Z.N` on top of upstream's `X.Y.Z`. Bumping it is what releases: the registry rejects a version it already has, so the publish job only runs when this file changes.
 
 Adding a carrier:
