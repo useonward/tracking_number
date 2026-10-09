@@ -4,6 +4,7 @@ on:
   push:
     branches: [ "onward" ]
     paths: [ "lib/tracking_number/version.rb" ]
+  pull_request:
 
 jobs:
   build:
@@ -30,6 +31,7 @@ jobs:
         gem install ./tracking_number-*.gem
         ruby -e 'require "tracking_number"; abort "gem detects no carriers" unless TrackingNumber.new("1Z5R89390357567127").courier_code == :ups && TrackingNumber.new("YWE00000000000001").courier_code == :ywe'
     - name: Publish to Github Package Registry (GPR)
+      if: github.event_name == 'push'
       run: |
         mkdir -p $HOME/.gem
         touch $HOME/.gem/credentials
