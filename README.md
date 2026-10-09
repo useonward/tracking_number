@@ -4,7 +4,7 @@
 
 ## Onward fork
 
-Onward's fork of [jkeen/tracking_number](https://github.com/jkeen/tracking_number), published to our GitHub Packages registry like `scorekeeper`, to recognize carriers upstream doesn't cover yet. `.github/workflows/gem-push.yml` runs the tests, then builds and publishes the gem whenever a push to `onward` changes `lib/tracking_number/version.rb`. Onward installs it inside the scoped `source "https://rubygems.pkg.github.com/useonward"` block in its Gemfile, so Bundler never resolves the public rubygems.org gem of the same name.
+Onward's fork of [jkeen/tracking_number](https://github.com/jkeen/tracking_number). It recognizes carriers upstream doesn't cover yet and is published to our GitHub Packages registry, like `scorekeeper`. `.github/workflows/gem-push.yml` runs the tests, then builds and publishes the gem whenever a push to `onward` changes `lib/tracking_number/version.rb`. Once published, Onward installs it inside the scoped `source "https://rubygems.pkg.github.com/useonward"` block in its Gemfile, so Bundler never resolves the public rubygems.org gem of the same name.
 
 What differs from upstream:
 
