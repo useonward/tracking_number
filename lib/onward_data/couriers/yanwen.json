@@ -1,0 +1,25 @@
+{
+  "name": "Yanwen",
+  "courier_code": "yanwen",
+  "tracking_numbers": [
+    {
+      "name": "Yanwen",
+      "id": "yanwen",
+      "regex": [
+        "\\s*Y\\s*W\\s*(?<SerialNumber>([0-9]\\s*){9})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "YW000000001",
+          "YW000000002"
+        ],
+        "invalid": [
+          "YW00000001",
+          "YW0000000001",
+          "YWE00000000000001"
+        ]
+      }
+    }
+  ]
+}

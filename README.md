@@ -2,6 +2,28 @@
 [![Gem Version](https://badge.fury.io/rb/tracking_number.svg)](https://badge.fury.io/rb/tracking_number)
 [![Gem](https://img.shields.io/gem/dt/tracking_number.svg)]()
 
+## Onward fork
+
+Onward's fork of [jkeen/tracking_number](https://github.com/jkeen/tracking_number). It recognizes carriers upstream doesn't cover yet and is published to our GitHub Packages registry, like `scorekeeper`. `.github/workflows/gem-push.yml` runs the tests, then builds and publishes the gem whenever a push to `onward` changes `lib/tracking_number/version.rb`. Once published, Onward installs it inside the scoped `source "https://rubygems.pkg.github.com/useonward"` block in its Gemfile, so Bundler never resolves the public rubygems.org gem of the same name.
+
+What differs from upstream:
+
+- `lib/onward_data/couriers/*.json`: our carrier definitions, in the same format as upstream's `lib/data/couriers`. The `lib/data` submodule still points at upstream `jkeen/tracking_number_data`.
+- `lib/tracking_number.rb` and `lib/tracking_number/loader.rb`: load both folders.
+- `test/tracking_number_meta_test.rb` runs every definition's test numbers from both folders, and `test/onward_couriers_test.rb` fails if our carriers stop loading or lose detection to another carrier.
+- `tracking_number.gemspec`: `allowed_push_host` limits `gem push` to GitHub Packages, and `github_repo` links the package to this repository.
+- `ruby.yml` adds Ruby 4.0, which Onward runs, to upstream's matrix, runs with a read-only token, and drops upstream's job that started a rubygems.org release on pushes to `main`.
+- `lib/tracking_number/version.rb` is our published version, `X.Y.Z.N` on top of upstream's `X.Y.Z`. Bumping it is what releases: the registry rejects a version it already has, so the publish job only runs when this file changes.
+
+Adding a carrier:
+
+1. Add `lib/onward_data/couriers/<carrier>.json` with synthetic test numbers. This repo is public, so never use real customer tracking numbers.
+2. Run `bundle exec rake test`.
+3. Bump `VERSION`, merge to `onward`, and bump the version in Onward's Gemfile once the publish job finishes.
+4. Open the same definition upstream as a PR to `jkeen/tracking_number_data`. Delete it here once an upstream release includes it.
+
+Taking an upstream release: merge the upstream tag into `onward` (it carries the `lib/data` submodule commit), run `git submodule update --init` and the tests, set `VERSION` to `X.Y.Z.1`, merge, and bump Onward's Gemfile. The gem is built from the `lib/data` submodule, so a build without it ships none of upstream's carriers and raises no error. The publish job checks for that before it pushes.
+
 ## Tracking Number
 
 This gem identifies valid tracking numbers and can tell you a little bit about the shipment just from the number—there's quite a bit of info tucked away into those numbers, it turns out.
