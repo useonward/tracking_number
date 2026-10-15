@@ -1,0 +1,26 @@
+{
+  "name": "UniUni",
+  "courier_code": "uniuni",
+  "tracking_numbers": [
+    {
+      "name": "UniUni",
+      "id": "uniuni",
+      "regex": [
+        "\\s*U\\s*U\\s*S\\s*(?<SerialNumber>([0-9]\\s*)([0-9A-Z]\\s*){2}([0-9]\\s*){13})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "UUS0000000000000001",
+          "UUS0AB0000000000002"
+        ],
+        "invalid": [
+          "UUS000000000000001",
+          "UUS00000000000000001",
+          "UUSC000000000000001",
+          "UUS000000000000000A"
+        ]
+      }
+    }
+  ]
+}

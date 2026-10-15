@@ -6,6 +6,7 @@ class OnwardCouriersTest < Minitest::Test
       "YWE00000000000001" => :ywe,
       "YWLAX000000000001" => :ywe,
       "YW000000001" => :yanwen,
+      "UUS0000000000000001" => :uniuni,
     }.each do |number, courier_code|
       assert_equal courier_code, TrackingNumber.new(number).courier_code, number
     end
