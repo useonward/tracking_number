@@ -1,0 +1,31 @@
+{
+  "name": "OCS",
+  "courier_code": "ocs",
+  "tracking_numbers": [
+    {
+      "name": "OCS (11)",
+      "id": "ocs_11",
+      "regex": [
+        "\\s*(?<SerialNumber>1\\s*1\\s*0\\s*5\\s*([0-9]\\s*){6})(?<CheckDigit>[0-9]\\s*)\\s*"
+      ],
+      "validation": {
+        "checksum": {
+          "name": "mod7",
+          "modulo": 7
+        }
+      },
+      "test_numbers": {
+        "valid": [
+          "11050000006",
+          "11050000010",
+          "11051234563"
+        ],
+        "invalid": [
+          "11050000007",
+          "1105000000",
+          "11060000006"
+        ]
+      }
+    }
+  ]
+}

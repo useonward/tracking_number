@@ -1,0 +1,23 @@
+{
+  "name": "Asendia",
+  "courier_code": "asendia",
+  "tracking_numbers": [
+    {
+      "name": "Asendia (14)",
+      "id": "asendia_14",
+      "regex": [
+        "\\s*9\\s*2\\s*5\\s*1\\s*(?<SerialNumber>([0-9]\\s*){10})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "92510000000001"
+        ],
+        "invalid": [
+          "9251000000001",
+          "92520000000001"
+        ]
+      }
+    }
+  ]
+}
