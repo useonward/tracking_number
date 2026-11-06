@@ -1,0 +1,12 @@
+{
+  "AU": "australia_post",
+  "BE": "bpost",
+  "CN": "china_post",
+  "DE": "deutsche_post",
+  "FR": "la_poste",
+  "GB": "royal_mail",
+  "IE": "an_post",
+  "JP": "japan_post",
+  "NL": "postnl",
+  "NO": "posten_norge"
+}

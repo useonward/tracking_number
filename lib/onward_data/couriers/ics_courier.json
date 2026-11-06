@@ -1,0 +1,24 @@
+{
+  "name": "ICS Courier",
+  "courier_code": "ics_courier",
+  "tracking_numbers": [
+    {
+      "name": "ICS Courier",
+      "id": "ics_courier",
+      "regex": [
+        "\\s*(?<SerialNumber>(N\\s*D\\s*|G\\s*R\\s*)[0-9]\\s*([0-9A-Z]\\s*){17})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "ND0ABCDEF000000000A1",
+          "GR1AAAAAAAAAAAAAAAAA"
+        ],
+        "invalid": [
+          "ND0ABCDEF000000000A",
+          "NDXABCDEF000000000A1"
+        ]
+      }
+    }
+  ]
+}

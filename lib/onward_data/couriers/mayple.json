@@ -1,0 +1,38 @@
+{
+  "name": "Mayple",
+  "courier_code": "mayple",
+  "tracking_numbers": [
+    {
+      "name": "Mayple (14)",
+      "id": "mayple_14",
+      "regex": [
+        "\\s*M\\s*P\\s*L\\s*(?<SerialNumber>([0-9]\\s*){11})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "MPL00000000001"
+        ],
+        "invalid": [
+          "MPL0000000001"
+        ]
+      }
+    },
+    {
+      "name": "Mayple (16)",
+      "id": "mayple_16",
+      "regex": [
+        "\\s*M\\s*P\\s*L\\s*(?<SerialNumber>([0-9]\\s*){13})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "MPL0000000000001"
+        ],
+        "invalid": [
+          "MPL000000000001"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "ShipBob",
+  "courier_code": "shipbob",
+  "tracking_numbers": [
+    {
+      "name": "ShipBob",
+      "id": "shipbob",
+      "regex": [
+        "\\s*S\\s*B\\s*(?<SerialNumber>([0-9A-Z]\\s*){15})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "SBAAAAAAAAAAAA001",
+          "SB000000000000001"
+        ],
+        "invalid": [
+          "SBAAAAAAAAAAAA01"
+        ]
+      }
+    }
+  ]
+}

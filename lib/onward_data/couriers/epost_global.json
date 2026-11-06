@@ -1,0 +1,22 @@
+{
+  "name": "ePost Global",
+  "courier_code": "epost_global",
+  "tracking_numbers": [
+    {
+      "name": "EPost Global (18)",
+      "id": "epost_global",
+      "regex": [
+        "\\s*E\\s*P\\s*G\\s*(?<SerialNumber>([0-9]\\s*){15})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "EPG000000000000001"
+        ],
+        "invalid": [
+          "EPG00000000000001"
+        ]
+      }
+    }
+  ]
+}

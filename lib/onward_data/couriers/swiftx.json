@@ -1,0 +1,22 @@
+{
+  "name": "SwiftX",
+  "courier_code": "swiftx",
+  "tracking_numbers": [
+    {
+      "name": "SwiftX",
+      "id": "swiftx",
+      "regex": [
+        "\\s*S\\s*W\\s*X\\s*(?<SerialNumber>([0-9]\\s*){18})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "SWX000000000000000001"
+        ],
+        "invalid": [
+          "SWX00000000000000001"
+        ]
+      }
+    }
+  ]
+}

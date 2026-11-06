@@ -1,0 +1,25 @@
+{
+  "name": "Better Trucks",
+  "courier_code": "better_trucks",
+  "tracking_numbers": [
+    {
+      "name": "Better Trucks",
+      "id": "better_trucks",
+      "regex": [
+        "\\s*B\\s*T\\s*[A-Z]\\s*[A-Z_]\\s*(?<SerialNumber>([0-9]\\s*){5}([0-9A-Z]\\s*){6})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "BTPA00000ABC123",
+          "BTS_00000ABCDEF",
+          "BTP_00000000001"
+        ],
+        "invalid": [
+          "BTPA00000ABC12",
+          "BTPAX0000ABC123"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "GOFO France",
+  "courier_code": "gofo_france",
+  "tracking_numbers": [
+    {
+      "name": "GOFO Express (FR)",
+      "id": "gofo_fr",
+      "regex": [
+        "\\s*G\\s*F\\s*F\\s*R\\s*(?<SerialNumber>([0-9]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "GFFR00000000000001"
+        ],
+        "invalid": [
+          "GFFR0000000000001"
+        ]
+      }
+    }
+  ]
+}

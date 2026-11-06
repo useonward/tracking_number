@@ -21,6 +21,39 @@
           "UUS000000000000000A"
         ]
       }
+    },
+    {
+      "name": "UniUni UR (19)",
+      "id": "uniuni_ur",
+      "regex": [
+        "\\s*U\\s*R\\s*(?<SerialNumber>([0-9]\\s*){17})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "UR00000000000000001"
+        ],
+        "invalid": [
+          "UR0000000000000001"
+        ]
+      }
+    },
+    {
+      "name": "UniUni U0 (16)",
+      "id": "uniuni_u0",
+      "regex": [
+        "\\s*U\\s*0\\s*(?<SerialNumber>([0-9]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "U000000000000001"
+        ],
+        "invalid": [
+          "U00000000000001",
+          "U100000000000001"
+        ]
+      }
     }
   ]
 }

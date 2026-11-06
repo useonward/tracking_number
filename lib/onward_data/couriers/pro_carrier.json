@@ -1,0 +1,22 @@
+{
+  "name": "Pro Carrier",
+  "courier_code": "pro_carrier",
+  "tracking_numbers": [
+    {
+      "name": "Pro Carrier DG",
+      "id": "pro_carrier_dg",
+      "regex": [
+        "\\s*D\\s*G\\s*(?<SerialNumber>([0-9]\\s*){11})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "DG00000000001"
+        ],
+        "invalid": [
+          "DG0000000001"
+        ]
+      }
+    }
+  ]
+}

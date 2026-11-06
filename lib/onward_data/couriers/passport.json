@@ -1,0 +1,41 @@
+{
+  "name": "Passport",
+  "courier_code": "passport",
+  "tracking_numbers": [
+    {
+      "name": "Passport PG",
+      "id": "passport_pg",
+      "regex": [
+        "\\s*P\\s*G\\s*(?<SerialNumber>([0-9]\\s*){10,11}([A-Z]\\s*){2})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "PG0000000001CA",
+          "PG00000000001FR"
+        ],
+        "invalid": [
+          "PG000000001CA",
+          "PG0000000001C1"
+        ]
+      }
+    },
+    {
+      "name": "Passport H0 (16)",
+      "id": "passport_h0",
+      "regex": [
+        "\\s*H\\s*0\\s*(?<SerialNumber>([0-9A-Z]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "H0ABCD0000000001",
+          "H00000000000000A"
+        ],
+        "invalid": [
+          "H0ABCD000000000"
+        ]
+      }
+    }
+  ]
+}

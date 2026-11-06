@@ -1,0 +1,22 @@
+{
+  "name": "CDL",
+  "courier_code": "cdl",
+  "tracking_numbers": [
+    {
+      "name": "CDL",
+      "id": "cdl",
+      "regex": [
+        "\\s*C\\s*D\\s*L\\s*(?<SerialNumber>([0-9A-Z]\\s*){12})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "CDLABCDEF000001"
+        ],
+        "invalid": [
+          "CDLABCDEF00000"
+        ]
+      }
+    }
+  ]
+}

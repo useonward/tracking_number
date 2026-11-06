@@ -9,7 +9,9 @@ Onward's fork of [jkeen/tracking_number](https://github.com/jkeen/tracking_numbe
 What differs from upstream:
 
 - `lib/onward_data/couriers/*.json`: our carrier definitions, in the same format as upstream's `lib/data/couriers`. The `lib/data` submodule still points at upstream `jkeen/tracking_number_data`.
-- `lib/tracking_number.rb` and `lib/tracking_number/loader.rb`: load both folders.
+- `lib/tracking_number.rb` and `lib/tracking_number/loader.rb`: load both folders, ours first, so our definition wins when it and an upstream one match a number equally well. That's how `GM` numbers return `dhl_ecommerce` rather than upstream's `dhl`.
+- `lib/onward_data/national_post_courier_codes.json`: S10 numbers from these countries return their post's code (`royal_mail` for GB) instead of `s10`. Other countries still return `s10`.
+- `TrackingNumber.courier_codes` lists every code the gem can return, including the national posts.
 - `test/tracking_number_meta_test.rb` runs every definition's test numbers from both folders, and `test/onward_couriers_test.rb` fails if our carriers stop loading or lose detection to another carrier.
 - `tracking_number.gemspec`: `allowed_push_host` limits `gem push` to GitHub Packages, and `github_repo` links the package to this repository.
 - `ruby.yml` adds Ruby 4.0, which Onward runs, to upstream's matrix, runs with a read-only token, and drops upstream's job that started a rubygems.org release on pushes to `main`.
@@ -70,10 +72,11 @@ t.courier_name #=> "UPS"
 
 t = TrackingNumber.new("RB123456785GB")
 t.courier_name #=> "Royal Mail Group plc"
-t.courier_code #=> :s10
+t.courier_code #=> :royal_mail (this fork; upstream returns :s10)
 
 t = TrackingNumber.new("RB123456785US")
 t.courier_name #=> "United States Postal Service"
+t.courier_code #=> :s10
 ```
 
 #### Service Type
