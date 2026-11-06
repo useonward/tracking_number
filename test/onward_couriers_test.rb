@@ -18,6 +18,10 @@ class OnwardCouriersTest < Minitest::Test
     end
   end
 
+  should "load a class for every Onward format" do
+    ONWARD_CLASSES.each { |name| assert Object.const_defined?(name), name }
+  end
+
   should "leave upstream's valid test numbers to upstream's formats, except the GM override" do
     UPSTREAM_COURIERS.flat_map { |courier| courier["tracking_numbers"] }.flat_map { |format| format["test_numbers"]["valid"] }.each do |number|
       detected = TrackingNumber.new(number).class.name
