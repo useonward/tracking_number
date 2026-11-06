@@ -140,7 +140,7 @@ module TrackingNumber
 
     def courier_code
       code = self.class.const_get(:COURIER_CODE)
-      national_post = TrackingNumber::NATIONAL_POST_COURIER_CODES[matching_additional.dig('Courier', :matches)] if code == 's10'
+      national_post = TrackingNumber::NATIONAL_POST_COURIER_CODES[match_group('CountryCode')] if code == 's10'
       (national_post || code).to_sym
     end
 
