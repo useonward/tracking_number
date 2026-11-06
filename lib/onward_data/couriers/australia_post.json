@@ -1,0 +1,26 @@
+{
+  "name": "Australia Post",
+  "courier_code": "australia_post",
+  "tracking_numbers": [
+    {
+      "name": "Australia Post (23)",
+      "id": "australia_post_23",
+      "regex": [
+        "\\s*(?<SerialNumber>3\\s*[0-9]\\s*[A-Z]\\s*([0-9A-Z]\\s*){2}([0-9]\\s*){18})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "33ABC000000000000000001",
+          "36A00000000000000000001",
+          "34AB0000000000000000001"
+        ],
+        "invalid": [
+          "33ABC00000000000000001",
+          "43ABC000000000000000001",
+          "331BC000000000000000001"
+        ]
+      }
+    }
+  ]
+}

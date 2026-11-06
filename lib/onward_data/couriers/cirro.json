@@ -1,0 +1,54 @@
+{
+  "name": "Cirro",
+  "courier_code": "cirro",
+  "tracking_numbers": [
+    {
+      "name": "Cirro (14)",
+      "id": "cirro_14",
+      "regex": [
+        "\\s*C\\s*R\\s*(?<SerialNumber>([0-9]\\s*){12})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "CR000000000001"
+        ],
+        "invalid": [
+          "CR00000000001"
+        ]
+      }
+    },
+    {
+      "name": "Cirro CRA (15)",
+      "id": "cirro_cra",
+      "regex": [
+        "\\s*C\\s*R\\s*A\\s*(?<SerialNumber>([0-9]\\s*){12})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "CRA000000000001"
+        ],
+        "invalid": [
+          "CRA00000000001"
+        ]
+      }
+    },
+    {
+      "name": "Cirro CRIN (18)",
+      "id": "cirro_crin",
+      "regex": [
+        "\\s*C\\s*R\\s*I\\s*N\\s*(?<SerialNumber>([0-9]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "CRIN00000000000001"
+        ],
+        "invalid": [
+          "CRIN0000000000001"
+        ]
+      }
+    }
+  ]
+}

@@ -40,16 +40,17 @@ class TrackingNumberMetaTest < Minitest::Test
 
           context "number test" do
             tracking_number = klass.new(valid_number)
+            national_post = TrackingNumber::NATIONAL_POST_COURIER_CODES[valid_number.gsub(/\s/, "")[-2..]] if courier_code == :s10
+            expected_code = (national_post || courier_code).to_sym
 
             should "validate #{valid_number} with #{klass_name}" do
-              assert_equal courier_code, tracking_number.carrier
+              assert_equal expected_code, tracking_number.carrier
               assert tracking_number.valid?, "should be valid"
             end
 
             should "return correct courier code on #{valid_number} when calling #courier_code" do
               tracking_number = klass.new(valid_number)
-              assert_equal courier_info[:courier_code].to_sym, tracking_number.courier_code
-              assert_equal courier_info[:courier_code].to_sym,tracking_number.courier_code
+              assert_equal expected_code, tracking_number.courier_code
             end
 
             should "return correct courier name on #{valid_number} when calling #courier_name" do

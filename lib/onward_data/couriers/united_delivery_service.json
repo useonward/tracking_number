@@ -1,0 +1,23 @@
+{
+  "name": "United Delivery Service",
+  "courier_code": "united_delivery_service",
+  "tracking_numbers": [
+    {
+      "name": "United Delivery Service",
+      "id": "united_delivery_service",
+      "regex": [
+        "\\s*(?<SerialNumber>([0-9]\\s*){3}U\\s*D\\s*S\\s*([0-9]\\s*){13})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "000UDS0000000000001"
+        ],
+        "invalid": [
+          "000UDS000000000001",
+          "000UDX0000000000001"
+        ]
+      }
+    }
+  ]
+}

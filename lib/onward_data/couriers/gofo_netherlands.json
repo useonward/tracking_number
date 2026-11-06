@@ -1,0 +1,22 @@
+{
+  "name": "GOFO Netherlands",
+  "courier_code": "gofo_netherlands",
+  "tracking_numbers": [
+    {
+      "name": "GOFO Express (NL)",
+      "id": "gofo_nl",
+      "regex": [
+        "\\s*G\\s*F\\s*N\\s*L\\s*(?<SerialNumber>([0-9]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "GFNL00000000000001"
+        ],
+        "invalid": [
+          "GFNL0000000000001"
+        ]
+      }
+    }
+  ]
+}

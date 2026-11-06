@@ -1,0 +1,56 @@
+{
+  "name": "SpeedX",
+  "courier_code": "speedx",
+  "tracking_numbers": [
+    {
+      "name": "SpeedX (18)",
+      "id": "speedx_18",
+      "regex": [
+        "\\s*S\\s*P\\s*X\\s*(?<SerialNumber>([A-Z]\\s*){3}([0-9]\\s*){12})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "SPXABC000000000001",
+          "SPXXYZ123456789012"
+        ],
+        "invalid": [
+          "SPXABC00000000001",
+          "SPXAB1000000000001"
+        ]
+      }
+    },
+    {
+      "name": "SpeedX (24)",
+      "id": "speedx_24",
+      "regex": [
+        "\\s*S\\s*P\\s*X\\s*(?<SerialNumber>([A-Z]\\s*){3}([0-9]\\s*){18})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "SPXABC000000000000000001"
+        ],
+        "invalid": [
+          "SPXABC00000000000000001"
+        ]
+      }
+    },
+    {
+      "name": "SpeedX 1MSPX (19)",
+      "id": "speedx_1mspx",
+      "regex": [
+        "\\s*1\\s*M\\s*S\\s*P\\s*X\\s*(?<SerialNumber>([0-9]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "1MSPX00000000000001"
+        ],
+        "invalid": [
+          "1MSPX0000000000001"
+        ]
+      }
+    }
+  ]
+}

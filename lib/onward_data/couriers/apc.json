@@ -1,0 +1,23 @@
+{
+  "name": "APC Postal Logistics",
+  "courier_code": "apc",
+  "tracking_numbers": [
+    {
+      "name": "APC Postal Logistics (22)",
+      "id": "apc_22",
+      "regex": [
+        "\\s*(?<SerialNumber>([0-9]\\s*){5}P\\s*([0-9]\\s*){16})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "00000P0000000000000001"
+        ],
+        "invalid": [
+          "00000P000000000000001",
+          "00000X0000000000000001"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Veho",
+  "courier_code": "veho",
+  "tracking_numbers": [
+    {
+      "name": "Veho VH (14)",
+      "id": "veho_vh",
+      "regex": [
+        "\\s*V\\s*H\\s*(?<SerialNumber>([0-9A-Z]\\s*){12})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "VHABCDEF000001",
+          "VH0000000000AB"
+        ],
+        "invalid": [
+          "VHABCDEF00000"
+        ]
+      }
+    },
+    {
+      "name": "Veho (17)",
+      "id": "veho_17",
+      "regex": [
+        "\\s*(?<SerialNumber>(?=([0-9]\\s*)*[A-F])([0-9A-F]\\s*){17})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "0000000000000000A",
+          "ABCDEF00000000001"
+        ],
+        "invalid": [
+          "000000000000000A",
+          "00000000000000001",
+          "0000000000000000G"
+        ]
+      }
+    }
+  ]
+}

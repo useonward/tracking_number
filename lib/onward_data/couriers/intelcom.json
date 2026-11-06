@@ -1,0 +1,56 @@
+{
+  "name": "Intelcom",
+  "courier_code": "intelcom",
+  "tracking_numbers": [
+    {
+      "name": "Intelcom SE (12)",
+      "id": "intelcom_se",
+      "regex": [
+        "\\s*S\\s*E\\s*(?<SerialNumber>([0-9]\\s*){6}([0-9A-Z]\\s*){4})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "SE000000ABC1",
+          "SE0000001ABC"
+        ],
+        "invalid": [
+          "SE000000ABC",
+          "SE00000AABC1"
+        ]
+      }
+    },
+    {
+      "name": "Intelcom ESIG (18)",
+      "id": "intelcom_esig",
+      "regex": [
+        "\\s*E\\s*S\\s*I\\s*G\\s*(?<SerialNumber>([0-9]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "ESIG00000000000001"
+        ],
+        "invalid": [
+          "ESIG0000000000001"
+        ]
+      }
+    },
+    {
+      "name": "Intelcom INTLCMJ (16)",
+      "id": "intelcom_intlcmj",
+      "regex": [
+        "\\s*I\\s*N\\s*T\\s*L\\s*C\\s*M\\s*J\\s*(?<SerialNumber>([0-9]\\s*){9})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "INTLCMJ000000001"
+        ],
+        "invalid": [
+          "INTLCMJ00000001"
+        ]
+      }
+    }
+  ]
+}

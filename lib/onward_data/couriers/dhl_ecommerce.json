@@ -1,0 +1,24 @@
+{
+  "name": "DHL eCommerce",
+  "courier_code": "dhl_ecommerce",
+  "tracking_numbers": [
+    {
+      "name": "DHL eCommerce GM",
+      "id": "dhl_ecommerce_gm",
+      "regex": [
+        "\\s*G\\s*M\\s*(?<SerialNumber>(?=([A-Z]\\s*)*[0-9])([0-9A-Z]\\s*){16,23})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "GM0000000000000001",
+          "GMABCDEF00000000000001"
+        ],
+        "invalid": [
+          "GM000000000000001",
+          "GMABCDEFGHIJKLMNOPQR"
+        ]
+      }
+    }
+  ]
+}

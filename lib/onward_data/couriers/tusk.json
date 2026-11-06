@@ -1,0 +1,23 @@
+{
+  "name": "Tusk",
+  "courier_code": "tusk",
+  "tracking_numbers": [
+    {
+      "name": "Tusk",
+      "id": "tusk",
+      "regex": [
+        "\\s*T\\s*U\\s*S\\s*K\\s*(?<SerialNumber>([0-9A-Z]\\s*){12})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "TUSKABCDEFGHIJKL",
+          "TUSK000000000001"
+        ],
+        "invalid": [
+          "TUSKABCDEFGHIJK"
+        ]
+      }
+    }
+  ]
+}
