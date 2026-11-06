@@ -1,0 +1,24 @@
+{
+  "name": "ECMS",
+  "courier_code": "ecms",
+  "tracking_numbers": [
+    {
+      "name": "ECMS",
+      "id": "ecms",
+      "regex": [
+        "\\s*E\\s*C\\s*(?<SerialNumber>([A-Z]\\s*){3}X\\s*X\\s*([0-9]\\s*){9})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "ECABCXX000000001",
+          "ECXYZXX123456789"
+        ],
+        "invalid": [
+          "ECABCXX00000001",
+          "ECABCX1000000001"
+        ]
+      }
+    }
+  ]
+}
