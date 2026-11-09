@@ -1,0 +1,33 @@
+{
+  "name": "Parcel Right",
+  "courier_code": "parcel_right",
+  "tracking_numbers": [
+    {
+      "name": "Parcel Right (20)",
+      "id": "parcel_right_20",
+      "regex": [
+        "\\s*(?<SerialNumber>0\\s*0\\s*[13]\\s*9\\s*3\\s*5\\s*8\\s*0\\s*9\\s*4\\s*0\\s*([0-9]\\s*){8})(?<CheckDigit>[0-9]\\s*)\\s*"
+      ],
+      "validation": {
+        "checksum": {
+          "name": "mod10",
+          "modulo": 10,
+          "evens_multiplier": 3,
+          "odds_multiplier": 1,
+          "reverse": false
+        }
+      },
+      "test_numbers": {
+        "valid": [
+          "00393580940000000003",
+          "00193580940000000016",
+          "00393580940123456787"
+        ],
+        "invalid": [
+          "00393580940000000004",
+          "00293580940000000003"
+        ]
+      }
+    }
+  ]
+}
