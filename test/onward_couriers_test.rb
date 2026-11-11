@@ -44,14 +44,13 @@ class OnwardCouriersTest < Minitest::Test
     end
   end
 
-  should "not give a number the carrier of an ignored upstream format" do
-    ignored_formats = UPSTREAM_COURIERS.flat_map do |courier|
-      courier["tracking_numbers"].map { |format| [courier["courier_code"].to_sym, format] }
-    end.select { |_, format| TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS.include?(format["id"]) }
+  should "skip ignored upstream formats and return unknown for numbers only they matched" do
+    ignored_formats = UPSTREAM_COURIERS.flat_map { |courier| courier["tracking_numbers"] }.select { |format| TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS.include?(format["id"]) }
     assert_equal TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS.size, ignored_formats.size
 
-    ignored_formats.each do |courier_code, format|
-      format["test_numbers"]["valid"].each { |number| refute_equal courier_code, TrackingNumber.new(number).courier_code, number }
+    ignored_formats.each do |format|
+      class_name = "TrackingNumber::#{format["name"].gsub(/[^0-9A-Za-z]/, '')}"
+      format["test_numbers"]["valid"].each { |number| refute_equal class_name, TrackingNumber.new(number).class.name, number }
     end
     assert_equal :unknown, TrackingNumber.new("00000000000000").courier_code
     assert_equal :unknown, TrackingNumber.new("ABC123456789").courier_code
