@@ -44,6 +44,11 @@ class OnwardCouriersTest < Minitest::Test
     end
   end
 
+  should "not identify a 14-digit number from upstream's ignored any-14-digit DHL eCommerce format" do
+    assert_equal :unknown, TrackingNumber.new("60120172242323").courier_code
+    assert_equal :unknown, TrackingNumber.new("00000000000000").courier_code
+  end
+
   should "return the national post's code for an S10 number from a mapped country, and s10 otherwise" do
     TrackingNumber::NATIONAL_POST_COURIER_CODES.each do |country, courier_code|
       assert_equal courier_code.to_sym, TrackingNumber.new("RB123456785#{country}").courier_code, country
