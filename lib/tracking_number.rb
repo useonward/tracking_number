@@ -13,9 +13,18 @@ if defined?(ActiveModel::EachValidator)
   require 'tracking_number/active_model_validator'
 end
 
-TrackingNumber::Loader.load_tracking_number_data(%w[data/couriers onward_data/couriers].map { |dir| File.join(__dir__, dir) })
+# Onward's formats load first so they win a tie with an upstream format: detect keeps the first of
+# equally confident matches, which is how a GM number becomes DHL eCommerce rather than plain DHL.
+TrackingNumber::Loader.load_tracking_number_data(%w[onward_data/couriers data/couriers].map { |dir| File.join(__dir__, dir) })
 
 module TrackingNumber
+  # S10 numbers end in the issuing country, so these posts get their own code instead of s10.
+  NATIONAL_POST_COURIER_CODES = JSON.parse(File.read(File.join(__dir__, 'onward_data/national_post_courier_codes.json'))).freeze
+
+  def self.courier_codes
+    (TYPES.map { |type| type.const_get(:COURIER_CODE).to_sym } + NATIONAL_POST_COURIER_CODES.values.map(&:to_sym)).uniq
+  end
+
   def self.search(body, match: :carrier)
     matches = TYPES.collect { |type| type.search(body) }.flatten
 

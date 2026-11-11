@@ -1,0 +1,25 @@
+{
+  "name": "LaserShip",
+  "courier_code": "lasership",
+  "tracking_numbers": [
+    {
+      "name": "LaserShip 1LS (15)",
+      "id": "lasership_1ls_15",
+      "regex": [
+        "\\s*1\\s*L\\s*S\\s*(?!7\\s*[12]|C\\s*X)(?<SerialNumber>([0-9A-Z]\\s*){12})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "1LSABC000000001",
+          "1LSD00000000ABC"
+        ],
+        "invalid": [
+          "1LSABC00000000",
+          "1LS710000000001",
+          "1LSCX0000000001"
+        ]
+      }
+    }
+  ]
+}

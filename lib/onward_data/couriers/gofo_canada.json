@@ -1,0 +1,22 @@
+{
+  "name": "GOFO Canada",
+  "courier_code": "gofo_canada",
+  "tracking_numbers": [
+    {
+      "name": "GOFO Express (CA)",
+      "id": "gofo_ca",
+      "regex": [
+        "\\s*G\\s*F\\s*C\\s*A\\s*(?<SerialNumber>([0-9]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "GFCA00000000000001"
+        ],
+        "invalid": [
+          "GFCA0000000000001"
+        ]
+      }
+    }
+  ]
+}

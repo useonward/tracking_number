@@ -1,0 +1,42 @@
+{
+  "name": "DHL eCommerce",
+  "courier_code": "dhl_ecommerce",
+  "tracking_numbers": [
+    {
+      "name": "DHL eCommerce GM",
+      "id": "dhl_ecommerce_gm",
+      "regex": [
+        "\\s*G\\s*M\\s*(?<SerialNumber>(?=([A-Z]\\s*)*[0-9])([0-9A-Z]\\s*){16,23})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "GM0000000000000001",
+          "GMABCDEF00000000000001"
+        ],
+        "invalid": [
+          "GM000000000000001",
+          "GMABCDEFGHIJKLMNOPQR"
+        ]
+      }
+    },
+    {
+      "name": "DHL eCommerce (16)",
+      "id": "dhl_ecommerce_16",
+      "regex": [
+        "\\s*(?<![0-9])(?<![0-9]\\s)(?<![0-9]\\s\\s)(?<SerialNumber>6\\s*1\\s*0\\s*([0-9]\\s*){13})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "6100000000000016",
+          "6101234567890125"
+        ],
+        "invalid": [
+          "610000000000006",
+          "6110000000000016"
+        ]
+      }
+    }
+  ]
+}

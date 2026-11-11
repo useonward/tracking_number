@@ -1,0 +1,23 @@
+{
+  "name": "4PX",
+  "courier_code": "four_px",
+  "tracking_numbers": [
+    {
+      "name": "Four PX (18)",
+      "id": "four_px",
+      "regex": [
+        "\\s*4\\s*P\\s*X\\s*(?<SerialNumber>([0-9]\\s*){13}([A-Z]\\s*){2})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "4PX0000000000001CN"
+        ],
+        "invalid": [
+          "4PX000000000001CN",
+          "4PX0000000000001C1"
+        ]
+      }
+    }
+  ]
+}

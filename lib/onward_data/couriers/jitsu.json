@@ -1,0 +1,23 @@
+{
+  "name": "Jitsu",
+  "courier_code": "jitsu",
+  "tracking_numbers": [
+    {
+      "name": "Jitsu",
+      "id": "jitsu",
+      "regex": [
+        "\\s*J\\s*T\\s*(?<SerialNumber>([0-9]\\s*){14})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "JT00000000000001"
+        ],
+        "invalid": [
+          "JT0000000000001",
+          "JTAU000000000001"
+        ]
+      }
+    }
+  ]
+}
