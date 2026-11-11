@@ -11,14 +11,12 @@ def load_courier_data(name = :all)
 end
 
 class TrackingNumberMetaTest < Minitest::Test
-  IGNORED_UPSTREAM_FORMAT_IDS = JSON.parse(File.read(File.join(__dir__, "../lib/onward_data/ignored_upstream_format_ids.json")))
-
   load_courier_data(:all).each do |courier_info|
     courier_name = courier_info[:name]
     courier_code = courier_info[:courier_code].to_sym
 
     courier_info[:tracking_numbers].each do |tracking_info|
-      next if IGNORED_UPSTREAM_FORMAT_IDS.include?(tracking_info[:id])
+      next if TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS.include?(tracking_info[:id])
 
       klass_name = tracking_info[:name].gsub(/[^0-9A-Za-z]/, '')
       klass = "TrackingNumber::#{klass_name}".constantize

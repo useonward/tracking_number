@@ -44,8 +44,12 @@ class OnwardCouriersTest < Minitest::Test
     end
   end
 
-  should "not identify a 14-digit number from upstream's ignored any-14-digit DHL eCommerce format" do
-    assert_equal :unknown, TrackingNumber.new("60120172242323").courier_code
+  should "return unknown for numbers only an ignored upstream format matched" do
+    ignored_formats = UPSTREAM_COURIERS.flat_map { |courier| courier["tracking_numbers"] }.select { |format| TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS.include?(format["id"]) }
+    refute_empty ignored_formats
+    ignored_formats.flat_map { |format| format["test_numbers"]["valid"] }.each do |number|
+      assert_equal :unknown, TrackingNumber.new(number).courier_code, number
+    end
     assert_equal :unknown, TrackingNumber.new("00000000000000").courier_code
   end
 

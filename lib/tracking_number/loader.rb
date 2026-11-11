@@ -1,14 +1,14 @@
 module TrackingNumber
   module Loader
     class << self
-      def load_tracking_number_data(couriers_path = File.join(File.dirname(__FILE__), '../data/couriers/'), ignored_ids: [])
+      def load_tracking_number_data(couriers_path = File.join(File.dirname(__FILE__), '../data/couriers/'), ignored_format_ids: [])
         mapping_data = []
         tracking_number_types = []
         Array(couriers_path).flat_map { |path| Dir.glob(File.join(path, '/*.json')) }.each do |file|
           courier_info = read_courier_info(file)
 
           courier_info[:tracking_numbers].each do |tracking_info|
-            next if ignored_ids.include?(tracking_info[:id])
+            next if ignored_format_ids.include?(tracking_info[:id])
 
             klass = create_class(courier_info, tracking_info)
 
