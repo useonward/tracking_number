@@ -44,6 +44,18 @@ class OnwardCouriersTest < Minitest::Test
     end
   end
 
+  should "skip ignored upstream formats and return unknown for numbers only they matched" do
+    ignored_formats = UPSTREAM_COURIERS.flat_map { |courier| courier["tracking_numbers"] }.select { |format| TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS.include?(format["id"]) }
+    assert_equal TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS.size, ignored_formats.size
+
+    ignored_formats.each do |format|
+      class_name = "TrackingNumber::#{format["name"].gsub(/[^0-9A-Za-z]/, '')}"
+      format["test_numbers"]["valid"].each { |number| refute_equal class_name, TrackingNumber.new(number).class.name, number }
+    end
+    assert_equal :unknown, TrackingNumber.new("00000000000000").courier_code
+    assert_equal :unknown, TrackingNumber.new("ABC123456789").courier_code
+  end
+
   should "return the national post's code for an S10 number from a mapped country, and s10 otherwise" do
     TrackingNumber::NATIONAL_POST_COURIER_CODES.each do |country, courier_code|
       assert_equal courier_code.to_sym, TrackingNumber.new("RB123456785#{country}").courier_code, country

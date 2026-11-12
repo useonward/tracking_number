@@ -16,6 +16,8 @@ class TrackingNumberMetaTest < Minitest::Test
     courier_code = courier_info[:courier_code].to_sym
 
     courier_info[:tracking_numbers].each do |tracking_info|
+      next if TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS.include?(tracking_info[:id])
+
       klass_name = tracking_info[:name].gsub(/[^0-9A-Za-z]/, '')
       klass = "TrackingNumber::#{klass_name}".constantize
 

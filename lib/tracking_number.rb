@@ -15,7 +15,11 @@ end
 
 # Onward's formats load first so they win a tie with an upstream format: detect keeps the first of
 # equally confident matches, which is how a GM number becomes DHL eCommerce rather than plain DHL.
-TrackingNumber::Loader.load_tracking_number_data(%w[onward_data/couriers data/couriers].map { |dir| File.join(__dir__, dir) })
+TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS = JSON.parse(File.read(File.join(__dir__, 'onward_data/ignored_upstream_format_ids.json'))).freeze
+TrackingNumber::Loader.load_tracking_number_data(
+  %w[onward_data/couriers data/couriers].map { |dir| File.join(__dir__, dir) },
+  ignored_format_ids: TrackingNumber::IGNORED_UPSTREAM_FORMAT_IDS,
+)
 
 module TrackingNumber
   # S10 numbers end in the issuing country, so these posts get their own code instead of s10.
