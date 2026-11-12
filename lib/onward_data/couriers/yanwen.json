@@ -20,6 +20,31 @@
           "YWE00000000000001"
         ]
       }
+    },
+    {
+      "name": "Yanwen (YP)",
+      "id": "yanwen_yp",
+      "regex": [
+        "\\s*(?<ServiceType>([A-Z]\\s*){2})(?<SerialNumber>([0-9]\\s*){8})(?<CheckDigit>([0-9]\\s*))Y\\s*P\\s*"
+      ],
+      "validation": {
+        "checksum": {
+          "name": "s10",
+          "weightings": [8, 6, 4, 2, 3, 5, 9, 7],
+          "modulo": 11
+        }
+      },
+      "test_numbers": {
+        "valid": [
+          "UL000000014YP",
+          "VR123456785YP"
+        ],
+        "invalid": [
+          "UL000000015YP",
+          "UL00000014YP",
+          "UL000000014CN"
+        ]
+      }
     }
   ]
 }

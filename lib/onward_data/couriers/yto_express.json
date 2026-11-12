@@ -1,0 +1,25 @@
+{
+  "name": "YTO Express",
+  "courier_code": "yto_express",
+  "tracking_numbers": [
+    {
+      "name": "YTO Express (G20)",
+      "id": "yto_express_g20",
+      "regex": [
+        "\\s*(?<SerialNumber>G\\s*2\\s*0\\s*([0-9]\\s*){9})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "G20000000001",
+          "G20123456789"
+        ],
+        "invalid": [
+          "G2000000001",
+          "G200000000001",
+          "G21000000001"
+        ]
+      }
+    }
+  ]
+}
