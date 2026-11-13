@@ -1,0 +1,26 @@
+{
+  "name": "J&T Express (AU)",
+  "courier_code": "jt_express_au",
+  "tracking_numbers": [
+    {
+      "name": "J&T Express (AU)",
+      "id": "jt_express_au",
+      "regex": [
+        "\\s*(?<SerialNumber>J\\s*T\\s*A\\s*U\\s*([0-9]\\s*){12})\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "JTAU100000000001",
+          "JTAU000000000000"
+        ],
+        "invalid": [
+          "JTAU10000000001",
+          "JTAU1000000000001",
+          "JT00000000000001",
+          "JTNZ100000000001"
+        ]
+      }
+    }
+  ]
+}
