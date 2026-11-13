@@ -1,0 +1,46 @@
+{
+  "name": "Emile",
+  "courier_code": "emile",
+  "tracking_numbers": [
+    {
+      "name": "Emile (16)",
+      "id": "emile_16",
+      "regex": [
+        "\\s*(?<SerialNumber>E\\s*M\\s*([0-9]\\s*){12}C\\s*A)\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "EM200000000001CA",
+          "EM123456789012CA"
+        ],
+        "invalid": [
+          "EM20000000001CA",
+          "EM2000000000001CA",
+          "EM200000000001US",
+          "EX200000000001CA"
+        ]
+      }
+    },
+    {
+      "name": "Emile (20)",
+      "id": "emile_20",
+      "regex": [
+        "\\s*(?<SerialNumber>E\\s*M\\s*([0-9]\\s*){16}C\\s*A)\\s*"
+      ],
+      "validation": {},
+      "test_numbers": {
+        "valid": [
+          "EM2000000000000001CA",
+          "EM1234567890123456CA"
+        ],
+        "invalid": [
+          "EM200000000000001CA",
+          "EM20000000000000001CA",
+          "EM2000000000000001US",
+          "EX2000000000000001CA"
+        ]
+      }
+    }
+  ]
+}
